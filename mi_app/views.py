@@ -10,6 +10,17 @@ def registroC(request):
 
 def registroP(request):
     return render(request, 'mi_app/registroP.html')
+def panel_admin(request):
+    conexion = ConexionDB()
+    # Consultamos ambas tablas
+    conductores = conexion.consultar("SELECT * FROM conductor")
+    pasajeros = conexion.consultar("SELECT * FROM pasajero")
+    
+    contexto = {
+        'conductores': conductores,
+        'pasajeros': pasajeros
+    }
+    return render(request, 'mi_app/panel.html', contexto)
 
 def procesar(request):
     if request.method == 'POST':

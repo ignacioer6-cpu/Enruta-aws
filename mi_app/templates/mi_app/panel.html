@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de Registros - En Ruta</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Panel de Administración Sistema "En Ruta"</h1>
+
+    <h2>Conductores Registrados</h2>
+    <table>
+        <tr><th>RUN</th><th>Nombres</th><th>Apellidos</th><th>Correo</th></tr>
+        {% for c in conductores %}
+        <tr><td>{{ c.run }}</td><td>{{ c.nombres }}</td><td>{{ c.apellidos }}</td><td>{{ c.correo }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Pasajeros Registrados</h2>
+    <table>
+        <tr><th>RUN</th><th>Nombres</th><th>Apellidos</th><th>Correo</th></tr>
+        {% for p in pasajeros %}
+        <tr><td>{{ p.run }}</td><td>{{ p.nombres }}</td><td>{{ p.apellidos }}</td><td>{{ p.correo }}</td></tr>
+        {% endfor %}
+    </table>
+    
+    <br>
+    <a href="{% url 'inicio' %}">Volver al Inicio</a>
+</body>
+</html>
