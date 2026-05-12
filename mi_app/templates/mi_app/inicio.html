@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mi_app/css/bootstrap.min.css' %}">
+    <script src="{% static 'mi_app/js/jquery-4.0.0.min.js'%}"></script>
+    <script src="{% static 'mi_app/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'mi_app/js/procesar.js' %}"></script>
+    <style>
+        /* Estilo inspirado en image_7cfbf2.png con paleta Negro, Morado y Celeste */
+        body {
+            background-color: #050505; /* Negro puro */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.15) 0, transparent 40%), 
+                radial-gradient(at 100% 100%, rgba(34, 211, 238, 0.15) 0, transparent 40%);
+            color: #a0aec0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 100vh;
+            padding: 40px 15px;
+        }
+
+        .container {
+            background: rgba(15, 15, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 45px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            max-width: 960px;
+        }
+
+        /* Encabezado */
+        .title-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-weight: 200;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+
+        .title-main img {
+            max-height: 80px;
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+        }
+
+        /* Botones con estilo Morado y Celeste */
+        .btn-group-custom {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-inicio {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .btn-inicio:hover {
+            transform: translateY(-5px);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Botón Inicio - Neutro */
+        .btn-inicio:first-child:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botón Conductor - Morado */
+        .btn-inicio.conductor {
+            border-bottom: 3px solid #7c3aed;
+        }
+        .btn-inicio.conductor:hover {
+            background: #7c3aed;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Botón Pasajero - Celeste */
+        .btn-inicio.pasajero {
+            border-bottom: 3px solid #22d3ee;
+        }
+        .btn-inicio.pasajero:hover {
+            background: #22d3ee;
+            color: #000;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+        }
+
+        /* Texto y Contenido */
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #cbd5e0;
+            font-weight: 300;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(124, 58, 237, 0.5), transparent);
+            margin: 40px 0;
+        }
+
+        /* Clima Section */
+        .clima-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 4px solid #22d3ee;
+        }
+
+        .form-control {
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #22d3ee;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        .form-control:focus {
+            background: #1e293b;
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.25);
+            color: #fff;
+        }
+
+        h3 {
+            color: #22d3ee;
+            font-size: 1.1rem;
+            margin: 12px 0;
+        }
+
+        .respuesta {
+            color: #7c3aed;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+    </style>
+    <title>En Ruta | Inicio</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo y Título -->
+        <div class="title-main">
+            <h1>En ruta</h1>
+            <img src="{% static 'img/xs.png' %}" alt="Logo En Ruta">
+        </div>
+
+        <!-- Navegación -->
+        <div class="btn-group-custom">
+            <a href="/" class="btn-inicio">🏠 Inicio</a>
+            <a href="/registroC/" class="btn-inicio conductor">🚗 Registro Conductor</a>
+            <a href="/registroP/" class="btn-inicio pasajero">👤 Registro Pasajero</a>
+        </div>
+
+        <hr>
+        
+        <h1>Página Principal</h1>
+        <p>
+            Viajar en micro es difícil porque nadie sabe exactamente a qué hora va a pasar el bus, lo que hace perder mucho tiempo. 
+            Además, las personas con discapacidad enfrentan barreras críticas: la falta de visibilidad en paraderos dificulta el acceso al transporte público. 
+        </p>
+        <p>
+            <strong>Nuestra solución:</strong> EnRuta es un ecosistema digital diseñado para conectar a conductores y pasajeros, brindando tiempos estimados de llegada, recorridos en tiempo real y accesibilidad mejorada.
+        </p>
+
+        <hr>
+
+        <!-- Sección de Clima -->
+        <div class="clima-container">
+            <h1>Estado del Clima</h1>
+            <div class="mb-4">
+                <h3 class="climaTemperatura"></h3>
+                <h3 class="climaCondicion"></h3>
+                <h3 class="climaHumedad"></h3>
+                <h3 class="climaActualizado"></h3>
+            </div>
+            
+            <select class="comboIndicador form-control">
+                <option value="">(Seleccione una ciudad)</option>
+            </select>
+            <h3 class="respuesta">Esperando selección...</h3>
+        </div>
+    </div>
+</body>
+</html>
