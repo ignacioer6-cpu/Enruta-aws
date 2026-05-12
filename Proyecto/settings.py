@@ -117,13 +117,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'enrutadb',  # El nombre que pusiste en "Configuración adicional"
-        'USER': 'postgres',   # El usuario maestro que definiste
-        'PASSWORD': 'nixio3119', # La que escribiste en el paso de "Autoadministrado"
-        'HOST': 'enruta-db.c7emye0e094i.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
-    }
+DB_CONFIG = {
+    'HOST': 'enruta-db.c7emye0e094i.us-east-1.rds.amazonaws.com',
+    'NAME': 'enrutadb',
+    'USER': 'postgres',
+    'PASSWORD': 'nixio3119',
+    'PORT': 5432
 }
